@@ -1,0 +1,434 @@
+@import 'tailwindcss';
+
+/* ----------------------------------------------------------------------------
+   Minhas Ideias — Design System
+   Estilo: cartoon / jovial / ensolarado. Fundo creme, cards branquinhos,
+   traços amarelos, cores de bala e sombras fofas. Tudo pra dar vontade de
+   tirar as ideias do papel. ☀️✨🚀
+   ------------------------------------------------------------------------- */
+@theme {
+  --font-sans: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fredoka', 'Nunito', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Laranja-sol — cor principal da marca (alegre e quente) */
+  --color-brand-50: #fff5ec;
+  --color-brand-100: #ffe6d2;
+  --color-brand-200: #ffcba6;
+  --color-brand-300: #ffaa70;
+  --color-brand-400: #ff8f47;
+  --color-brand-500: #f97216;
+  --color-brand-600: #e15c08;
+  --color-brand-700: #b8470a;
+  --color-brand-800: #8a360b;
+  --color-brand-900: #5c250b;
+
+  /* Amarelo-gema — highlights, traços de pincel e selos "featured" */
+  --color-wheat-300: #ffe08a;
+  --color-wheat-400: #ffce2e;
+  --color-wheat-500: #f5b81a;
+
+  /* Cores de bala para detalhes cartoon */
+  --color-candy-pink: #ec6a93;
+  --color-candy-sky: #4aa3e8;
+  --color-candy-lime: #7cc04a;
+  --color-candy-coral: #f37056;
+  --color-candy-grape: #9b7ae0;
+
+  /* Superfícies claras — creme e papel */
+  --color-ink-950: #f4eee2; /* fundo da página */
+  --color-ink-900: #fbf8f1; /* superfícies elevadas (sidebar) */
+  --color-ink-850: #ffffff; /* inputs, pílulas, header */
+  --color-ink-800: #fdfbf6;
+  --color-ink-700: #f0e9da; /* code inline / chips suaves */
+  --color-ink-600: #e7dcc8;
+
+  --color-line: rgba(54, 46, 36, 0.12);
+  --color-line-strong: rgba(54, 46, 36, 0.20);
+
+  --color-fg: #2c2722;       /* texto forte (quase preto quente) */
+  --color-fg-muted: #756b5e; /* texto secundário */
+  --color-fg-subtle: #a89c89;/* texto fraco / legendas */
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    /* Não deixa o iOS/Android aumentar a fonte sozinho ao girar a tela. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink-950);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Evita "flash" cinza ao tocar em links/botões no mobile. */
+    -webkit-tap-highlight-color: transparent;
+    /* Sem rolagem horizontal acidental. */
+    overflow-x: hidden;
+  }
+
+  /* Toque mais confortável e sem seleção acidental em botões/links de ação. */
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Céu de papel creme com traços de sol amarelo e respingos suaves */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(40rem 26rem at 88% -6%, rgba(255, 206, 46, 0.45), transparent 60%),
+      radial-gradient(34rem 30rem at -6% 16%, rgba(255, 206, 46, 0.32), transparent 58%),
+      radial-gradient(36rem 30rem at 96% 96%, rgba(236, 106, 147, 0.16), transparent 60%),
+      radial-gradient(30rem 28rem at 6% 100%, rgba(74, 163, 232, 0.14), transparent 60%),
+      linear-gradient(180deg, #f7f2e8, var(--color-ink-950));
+  }
+
+  /* Respingos/poeira de papel bem sutis */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      radial-gradient(3px 3px at 18% 28%, rgba(54, 46, 36, 0.05), transparent),
+      radial-gradient(4px 4px at 72% 20%, rgba(54, 46, 36, 0.04), transparent),
+      radial-gradient(3px 3px at 52% 70%, rgba(54, 46, 36, 0.05), transparent),
+      radial-gradient(5px 5px at 86% 74%, rgba(54, 46, 36, 0.03), transparent),
+      radial-gradient(3px 3px at 30% 86%, rgba(54, 46, 36, 0.04), transparent);
+    background-repeat: no-repeat;
+  }
+
+  ::selection {
+    background: rgba(255, 206, 46, 0.6);
+    color: #2c2722;
+  }
+
+  /* Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-brand-300) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: var(--color-brand-300);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand-400);
+    background-clip: padding-box;
+  }
+}
+
+@layer components {
+  /* Barra translúcida creme com base sutil */
+  .glass {
+    background: rgba(255, 253, 248, 0.82);
+    backdrop-filter: blur(16px) saturate(1.1);
+    border-bottom: 1.5px solid var(--color-line);
+    box-shadow: 0 6px 24px -16px rgba(54, 46, 36, 0.4);
+  }
+
+  /* Cartão "papel": branquinho, cantos bem redondos, borda fininha e sombra fofa */
+  .card {
+    background: #ffffff;
+    border: 1.5px solid var(--color-line);
+    border-radius: 1.5rem;
+    box-shadow: 0 14px 34px -22px rgba(54, 46, 36, 0.5);
+    transition:
+      transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.18s ease,
+      border-color 0.18s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px) rotate(-0.5deg);
+    border-color: var(--color-brand-300);
+    box-shadow: 0 22px 40px -20px rgba(249, 114, 22, 0.45);
+  }
+
+  /* Botão chiclete ensolarado: gradiente amarelo→laranja, redondo, com
+     aquele "pulinho" gostoso no hover/clique. */
+  .btn-brand {
+    background: linear-gradient(135deg, var(--color-wheat-400), var(--color-brand-400));
+    color: #3a2710;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    border: 2px solid #3a2710;
+    border-radius: 9999px;
+    box-shadow: 3px 3px 0 #3a2710;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.18s ease;
+  }
+  .btn-brand:hover {
+    transform: translate(-2px, -2px);
+    filter: saturate(1.08) brightness(1.03);
+    box-shadow: 5px 5px 0 #3a2710;
+  }
+  .btn-brand:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 #3a2710;
+  }
+
+  /* Etiqueta/pílula divertida */
+  .pill {
+    border: 1.5px solid var(--color-line);
+    border-radius: 9999px;
+    background: #ffffff;
+    box-shadow: 0 6px 16px -12px rgba(54, 46, 36, 0.5);
+  }
+
+  .focus-ring:focus-visible {
+    outline: 3px solid var(--color-candy-sky);
+    outline-offset: 2px;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Tipografia do conteúdo (.prose-doc) — leitura confortável e bem-humorada
+   ------------------------------------------------------------------------- */
+.prose-doc {
+  font-size: 1.02rem;
+  line-height: 1.78;
+  color: var(--color-fg);
+  /* Quebra palavras/URLs gigantes em vez de estourar a largura no celular. */
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.prose-doc > * + * {
+  margin-top: 1.15rem;
+}
+.prose-doc h1,
+.prose-doc h2,
+.prose-doc h3,
+.prose-doc h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-fg);
+  letter-spacing: -0.01em;
+  scroll-margin-top: 6rem;
+}
+.prose-doc h1 {
+  font-size: 2.4rem;
+  line-height: 1.12;
+  margin-bottom: 0.5rem;
+}
+/* O título já é exibido pelo cabeçalho da página (frontmatter `title`).
+   Ocultamos o H1 inicial do Markdown para evitar duplicação. O ContentRenderer
+   envolve o conteúdo em um <div>, então o H1 fica como neto de .prose-doc. */
+.prose-doc > h1:first-child,
+.prose-doc > div:first-child > h1:first-child {
+  display: none;
+}
+.prose-doc h2 {
+  font-size: 1.7rem;
+  margin-top: 2.75rem;
+  padding-top: 1.5rem;
+  border-top: 2px dashed var(--color-line-strong);
+}
+.prose-doc h3 {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+}
+.prose-doc h4 {
+  font-size: 1.08rem;
+  margin-top: 1.5rem;
+}
+.prose-doc a {
+  color: var(--color-brand-600);
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 2px solid rgba(225, 92, 8, 0.3);
+  transition: color 0.15s, border-color 0.15s;
+}
+.prose-doc a:hover {
+  color: var(--color-candy-pink);
+  border-color: var(--color-candy-pink);
+}
+.prose-doc strong {
+  color: var(--color-fg);
+  font-weight: 800;
+}
+.prose-doc ul,
+.prose-doc ol {
+  padding-left: 1.4rem;
+}
+.prose-doc ul {
+  list-style: none;
+}
+.prose-doc ul > li {
+  position: relative;
+}
+.prose-doc ul > li::before {
+  content: '';
+  position: absolute;
+  left: -1.2rem;
+  top: 0.62em;
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  background: var(--color-candy-pink);
+  box-shadow: 0 0 0 3px rgba(236, 106, 147, 0.2);
+}
+.prose-doc ol {
+  list-style: decimal;
+}
+.prose-doc li::marker {
+  color: var(--color-brand-500);
+  font-weight: 800;
+}
+.prose-doc li + li {
+  margin-top: 0.4rem;
+}
+.prose-doc blockquote {
+  border-left: 5px solid var(--color-wheat-400);
+  background: rgba(255, 206, 46, 0.16);
+  padding: 0.85rem 1.2rem;
+  border-radius: 0 1rem 1rem 0;
+  color: var(--color-fg-muted);
+  font-style: italic;
+}
+.prose-doc code:not(pre code) {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--color-ink-700);
+  border: 1.5px solid var(--color-line);
+  padding: 0.15em 0.45em;
+  border-radius: 0.5rem;
+  color: var(--color-brand-700);
+  font-weight: 600;
+}
+.prose-doc pre {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  background: #2a2620 !important;
+  /* Cor clara padrão: blocos sem realce do Shiki (ex.: ```text) herdariam o
+     texto escuro do tema sobre o fundo escuro e ficariam invisíveis. Tokens
+     realçados pelo Shiki trazem cor inline própria e sobrescrevem isto. */
+  color: #ece6d8;
+  border: 2px solid var(--color-line-strong);
+  border-radius: 1.1rem;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  box-shadow: 0 16px 30px -22px rgba(54, 46, 36, 0.7);
+}
+.prose-doc pre code {
+  color: inherit;
+}
+.prose-doc table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  display: block;
+  overflow-x: auto;
+  border-radius: 0.9rem;
+}
+.prose-doc th,
+.prose-doc td {
+  border: 1.5px solid var(--color-line);
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+}
+.prose-doc th {
+  background: var(--color-ink-700);
+  color: var(--color-fg);
+  font-weight: 700;
+}
+.prose-doc img {
+  border-radius: 1rem;
+  border: 1.5px solid var(--color-line-strong);
+  box-shadow: 0 18px 34px -22px rgba(54, 46, 36, 0.6);
+}
+.prose-doc hr {
+  border: none;
+  border-top: 2px dashed var(--color-line-strong);
+  margin: 2rem 0;
+}
+
+/* ----------------------------------------------------------------------------
+   Ajustes mobile — leitura confortável e blocos de código compactos no celular
+   ------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .prose-doc {
+    font-size: 0.97rem;
+    line-height: 1.72;
+  }
+  .prose-doc h1 {
+    font-size: 1.85rem;
+  }
+  .prose-doc h2 {
+    font-size: 1.35rem;
+    margin-top: 2rem;
+    padding-top: 1.1rem;
+  }
+  .prose-doc h3 {
+    font-size: 1.12rem;
+    margin-top: 1.5rem;
+  }
+  .prose-doc pre {
+    font-size: 0.78rem;
+    padding: 0.85rem 0.95rem;
+    border-radius: 0.85rem;
+  }
+  /* Sombras "sticker" mais discretas no mobile (menos peso visual). */
+  .card {
+    box-shadow: 0 10px 24px -18px rgba(54, 46, 36, 0.5);
+  }
+}
+
+/* Animações utilitárias */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Flutuação suave para enfeites */
+@keyframes float-dream {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+.animate-float {
+  animation: float-dream 6s ease-in-out infinite;
+}
+
+/* Balançar de empolgação (logo, ícones) */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-7deg); }
+  75% { transform: rotate(7deg); }
+}
+.hover-wiggle:hover {
+  animation: wiggle 0.5s ease-in-out;
+}

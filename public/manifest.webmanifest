@@ -1,0 +1,20 @@
+{
+  "name": "Minhas Ideias",
+  "short_name": "Minhas Ideias",
+  "description": "Meu cantinho pra organizar ideias, projetos e produtos — e tirar tudo do papel.",
+  "lang": "pt-BR",
+  "start_url": "/docs",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4eee2",
+  "theme_color": "#f4eee2",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

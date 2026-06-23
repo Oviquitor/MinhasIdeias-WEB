@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffce2e"/>
+      <stop offset="0.5" stop-color="#ffaa70"/>
+      <stop offset="1" stop-color="#f97216"/>
+    </linearGradient>
+  </defs>
+  <!-- Fundo cheio (maskable safe) -->
+  <rect width="512" height="512" fill="url(#g)"/>
+  <!-- Lâmpada de ideia centralizada na zona segura (~80%) -->
+  <g transform="translate(256 256) scale(13.5) translate(-12 -12)" fill="none">
+    <path d="M9 18h6v1.2a1.8 1.8 0 0 1-1.8 1.8h-2.4A1.8 1.8 0 0 1 9 19.2V18Z" fill="#3a2710"/>
+    <path d="M12 2.5a7 7 0 0 0-4.2 12.6c.5.4.8.9.9 1.5l.1.9h6.4l.1-.9c.1-.6.4-1.1.9-1.5A7 7 0 0 0 12 2.5Z" fill="#3a2710"/>
+    <path d="M12 6v3m0 0 1.8 1.8M12 9l-1.8 1.8" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  </g>
+</svg>
