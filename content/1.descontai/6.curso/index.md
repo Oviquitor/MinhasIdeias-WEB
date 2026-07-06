@@ -117,5 +117,12 @@ Admin) e a **API** (Java + Spring Boot) que conversa com todos eles. É essa API
 dissecar, do primeiro `if` até os 10 mil usuários.
 ::
 
+::callout{type="tip" title="Este é o passo 1 da Academia Descontai"}
+Este curso é a **base** de uma trilha maior. Depois de dominar o back-end aqui, os clientes que o
+consomem ganham cursos próprios: o [Curso do App (Flutter)](../7.curso-app), o
+[Curso Web (Vue/Nuxt)](../8.curso-web) e os guias do [Admin](../9.guia-admin) e do
+[Site](../10.guia-web). Comece pelo cérebro; os clientes fazem mais sentido depois.
+::
+
 Pronto? Então vamos começar entendendo **o que é uma API e como a internet funciona por baixo
 dos panos**. Aula 1 te espera. 🚀

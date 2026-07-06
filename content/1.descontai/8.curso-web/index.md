@@ -71,3 +71,10 @@ system próprio), e conversa com a **API REST** por HTTP.
 
 Um detalhe esperto que vamos explorar: o portal roda em **modo demonstração** (dados de exemplo) sem
 precisar da API no ar — o que o torna perfeito para estudar. Bora começar pelo **Módulo 1**.
+
+::callout{type="note" title="Faz parte da Academia Descontai"}
+Este é o **passo 3** da [trilha completa](../), depois do [Curso da API](../6.curso) e do
+[Curso do App](../7.curso-app). E é a **base dos três portais**: ao terminá-lo, os guias curtos do
+[Admin](../9.guia-admin) e do [Site](../10.guia-web) cobrem só o que cada um tem de diferente — a
+stack Nuxt/Vue você já vai dominar daqui.
+::

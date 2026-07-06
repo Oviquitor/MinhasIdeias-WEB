@@ -69,3 +69,10 @@ Android e iOS), fala com a **API REST** por HTTP, e usa **Firebase** para push e
 
 Ao final, cada uma dessas peças vai ter deixado de ser um mistério e virado conhecimento seu.
 Bora começar pelo **Módulo 1 — o que é um app e como ele conversa com a API**.
+
+::callout{type="note" title="Faz parte da Academia Descontai"}
+Este é o **passo 2** da [trilha completa](../): o passo 1 é o [Curso da API](../6.curso) (o back-end
+que este app consome). Depois vêm o [Curso Web](../8.curso-web) e os guias do
+[Admin](../9.guia-admin) e do [Site](../10.guia-web). Não é obrigatório ter feito a API antes, mas
+ajuda muito — várias aulas aqui citam "do outro lado está o código da API".
+::
