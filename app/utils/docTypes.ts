@@ -15,6 +15,8 @@ export interface DocTypeInfo {
 }
 
 export const DOC_TYPES: Record<string, DocTypeInfo> = {
+  curso: { label: 'Curso', icon: 'lucide:graduation-cap', color: '#f472b6' },
+  aula: { label: 'Aula', icon: 'lucide:book-open', color: '#22d3ee' },
   modulo: { label: 'Módulo', icon: 'lucide:box', color: '#16c172' },
   tela: { label: 'Tela', icon: 'lucide:app-window', color: '#38bdf8' },
   manual: { label: 'Manual', icon: 'lucide:book-open-text', color: '#e9c26a' },
