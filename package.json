@@ -23,5 +23,11 @@
     "@tailwindcss/vite": "^4.3.1",
     "better-sqlite3": "^12.11.1",
     "tailwindcss": "^4.3.1"
+  },
+    "//": "optionalDependencies abaixo: bindings nativos Linux x64/glibc declarados p/ o build Cloudflare (evita 'Cannot find native binding' no npm ci Linux — bug npm optional deps #4828).",
+  "optionalDependencies": {
+    "@oxc-parser/binding-linux-x64-gnu": "0.133.0",
+    "@rolldown/binding-linux-x64-gnu": "1.0.3",
+    "@tailwindcss/oxide-linux-x64-gnu": "4.3.1"
   }
 }
