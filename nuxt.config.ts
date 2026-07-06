@@ -5,6 +5,11 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
+  // Deploy na Cloudflare Pages: o Nitro gera a saída em dist/ (com _worker.js
+  // para as rotas de servidor, ex.: /api/auth/login). No painel da Cloudflare,
+  // use build command "npm run build" e output directory "dist".
+  nitro: { preset: 'cloudflare-pages' },
+
   modules: [
     '@nuxt/content',
     '@nuxt/icon',
