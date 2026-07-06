@@ -9,6 +9,15 @@ dist
 # Node dependencies
 node_modules
 
+# package-lock.json fora do versionamento DE PROPOSITO.
+# Deploy na Cloudflare (Linux) desenvolvendo no Windows: com lockfile a Cloudflare
+# roda `npm ci`, que NAO instala os bindings nativos de Linux (@oxc-parser/rolldown/
+# oxide) gravados por um lockfile gerado em outro SO (bug npm optional deps #4828) —
+# quebra o `nuxt prepare` com "Cannot find native binding". Sem lockfile, a Cloudflare
+# usa `npm install`, que resolve os binarios corretos para o Linux. As versoes seguem
+# fixadas pelos ranges do package.json.
+package-lock.json
+
 # Logs
 logs
 *.log
