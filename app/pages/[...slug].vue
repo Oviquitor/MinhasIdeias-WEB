@@ -29,6 +29,13 @@ const next = computed(() => (standalone.value ? null : surround.value?.[1] ?? nu
 
 const tocLinks = computed(() => (page.value as any)?.body?.toc?.links ?? [])
 
+// Índice colapsável no mobile: recolhe sozinho ao escolher uma seção, para não
+// ficar tampando o conteúdo depois do salto.
+const tocDetails = ref<HTMLDetailsElement | null>(null)
+function closeToc() {
+  if (tocDetails.value) tocDetails.value.open = false
+}
+
 const crumbs = computed(() =>
   path.value
     .split('/')
@@ -64,6 +71,30 @@ useHead(() => ({
           {{ page.description }}
         </p>
       </header>
+
+      <!-- Índice da aula no mobile/tablet: no xl+ há a TOC lateral, então some. -->
+      <details v-if="tocLinks.length" ref="tocDetails" class="toc-mobile xl:hidden">
+        <summary class="toc-summary">
+          <span class="flex items-center gap-2">
+            <Icon name="lucide:list-tree" class="h-4 w-4 text-brand-500" />
+            Nesta aula
+          </span>
+          <Icon name="lucide:chevron-down" class="toc-chevron h-4 w-4" />
+        </summary>
+        <nav class="toc-links" @click="closeToc">
+          <template v-for="l in tocLinks" :key="l.id">
+            <a :href="`#${l.id}`" class="toc-link">{{ l.text }}</a>
+            <a
+              v-for="c in (l.children || [])"
+              :key="c.id"
+              :href="`#${c.id}`"
+              class="toc-link toc-link--child"
+            >
+              {{ c.text }}
+            </a>
+          </template>
+        </nav>
+      </details>
 
       <div class="prose-doc">
         <ContentRenderer :value="page" />
@@ -103,3 +134,71 @@ useHead(() => ({
     </aside>
   </div>
 </template>
+
+<style scoped>
+/* Índice "Nesta aula" — disclosure nativo, com cara de card, só no mobile/tablet. */
+.toc-mobile {
+  margin-bottom: 2rem;
+  border: 1.5px solid var(--color-line);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: 0 10px 24px -20px rgba(54, 46, 36, 0.5);
+  overflow: hidden;
+}
+.toc-summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  min-height: 48px; /* alvo de toque confortável */
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-fg);
+  user-select: none;
+}
+/* Remove o triângulo padrão do <summary> (Chrome/Safari/Firefox). */
+.toc-summary::-webkit-details-marker {
+  display: none;
+}
+.toc-summary::marker {
+  content: '';
+}
+.toc-chevron {
+  color: var(--color-fg-subtle);
+  transition: transform 0.2s ease;
+}
+.toc-mobile[open] .toc-chevron {
+  transform: rotate(180deg);
+}
+.toc-links {
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 0.5rem 0.6rem;
+  border-top: 1.5px solid var(--color-line);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.toc-link {
+  display: block;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-fg-muted);
+  text-decoration: none;
+  line-height: 1.35;
+}
+.toc-link--child {
+  padding-left: 1.6rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-fg-subtle);
+}
+.toc-link:active {
+  background: var(--color-ink-700);
+  color: var(--color-brand-700);
+}
+</style>
