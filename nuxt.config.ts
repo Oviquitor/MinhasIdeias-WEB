@@ -5,10 +5,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
-  // Deploy na Cloudflare Pages: o Nitro gera a saída em dist/ (com _worker.js
-  // para as rotas de servidor, ex.: /api/auth/login). No painel da Cloudflare,
-  // use build command "npm run build" e output directory "dist".
-  nitro: { preset: 'cloudflare-pages' },
+  // Deploy na Cloudflare Workers (deploy via `npx wrangler deploy`): o preset
+  // cloudflare_module gera o worker em .output/server/index.mjs e os assets em
+  // .output/public (servidos pelo binding ASSETS do wrangler.jsonc).
+  nitro: { preset: 'cloudflare_module' },
 
   modules: [
     '@nuxt/content',

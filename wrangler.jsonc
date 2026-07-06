@@ -1,0 +1,19 @@
+{
+  // Configuração do Cloudflare Workers para o deploy via `npx wrangler deploy`.
+  // O build (nitro preset cloudflare_module) gera o worker em .output/server/index.mjs
+  // e os assets estáticos em .output/public (servidos pelo binding ASSETS).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "minhasideias-web",
+  "main": ".output/server/index.mjs",
+  "compatibility_date": "2025-07-15",
+  // nodejs_compat: habilita APIs do Node no edge (ex.: Buffer, usado na rota
+  // /api/auth/login). Sem isto, o worker quebra em runtime.
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".output/public"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
