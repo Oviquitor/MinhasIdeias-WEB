@@ -8,13 +8,13 @@ type: guia
 
 Este é um **guia curto**, não um curso. O site institucional do Descontai usa a **mesma stack** do
 curso web (Nuxt 4 + Vue 3), então tudo que você aprendeu no
-[Curso de front-end web](../8.curso-web) — componentes, reatividade, rotas por arquivo, CSS/design
+[Curso de front-end web](../curso-web) — componentes, reatividade, rotas por arquivo, CSS/design
 system — vale aqui. A diferença é o **tipo** de site: enquanto os portais (Empresas, Admin) são
 **painéis atrás de login**, este é um **site público de marketing**. E isso muda algumas decisões
 importantes.
 
 ::callout{type="note" title="Pré-requisito"}
-Faça primeiro o [Curso de front-end web (Vue/Nuxt)](../8.curso-web). Este guia cobre **só as
+Faça primeiro o [Curso de front-end web (Vue/Nuxt)](../curso-web). Este guia cobre **só as
 diferenças** de um site institucional em relação a um portal.
 ::
 

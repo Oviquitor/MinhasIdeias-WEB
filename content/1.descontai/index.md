@@ -38,27 +38,27 @@ nada de antemão além de lógica básica de programação.
 ### 1. Curso da API — o cérebro (back-end)
 Java + Spring Boot, de "o que é uma API?" (HTTP, REST, JSON) até deploy, CI/CD, Redis e escala para
 10 mil usuários. **22 aulas.** É a base de tudo — comece aqui.
-👉 [Abrir o Curso da API](6.curso)
+👉 [Abrir o Curso da API](curso)
 
 ### 2. Curso do App — o cliente mobile (Flutter)
 Constrói o app que o assinante usa: widgets, estado, navegação, consumo da API, segurança no
 aparelho, push e publicação nas lojas. **18 aulas.**
-👉 [Abrir o Curso do App](7.curso-app)
+👉 [Abrir o Curso do App](curso-app)
 
 ### 3. Curso Web — o front-end (Vue + Nuxt)
 A base do desenvolvimento web moderno, usando o Portal de Empresas: componentes, reatividade, rotas,
 estado, API, autenticação, CRUD e deploy. **16 aulas.** Serve para os três portais.
-👉 [Abrir o Curso Web](8.curso-web)
+👉 [Abrir o Curso Web](curso-web)
 
 ### 4. Guia do Admin — a operação
 Guia curto (assume o Curso Web) do painel administrativo: store central, catálogo de rotas e os
 padrões de operações sensíveis (auditoria, moderação, manutenção). **3 páginas.**
-👉 [Abrir o Guia do Admin](9.guia-admin)
+👉 [Abrir o Guia do Admin](guia-admin)
 
 ### 5. Guia Web — o site institucional
 Guia curto do site de marketing: SSR/SEO em vez de SPA, e a anatomia de uma landing de conversão com
 diretiva de animação. **2 páginas.**
-👉 [Abrir o Guia Web](10.guia-web)
+👉 [Abrir o Guia Web](guia-web)
 ::
 
 | Etapa | Projeto real | Stack | Formato |
